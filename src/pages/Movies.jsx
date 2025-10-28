@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
 
-function Home() {
+function Movies() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -16,16 +17,17 @@ function Home() {
         <NavBar />
       </header>
       <main>
-        <h1>Home Page</h1>
-        {movies.map((movie) => (
-          <div key={movie.id}>
-            <h2>{movie.title}</h2>
-            <a href={`/movie/${movie.id}`}>View Info</a>
-          </div>
-        ))}
+        <h1>Movies</h1>
+        <ul>
+          {movies.map((movie) => (
+            <li key={movie.id}>
+              <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
+            </li>
+          ))}
+        </ul>
       </main>
     </>
   );
 }
 
-export default Home;
+export default Movies;
